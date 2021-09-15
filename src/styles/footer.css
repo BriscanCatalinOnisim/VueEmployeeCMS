@@ -1,0 +1,12 @@
+.__footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: #345B63;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 27px;
+    font-family: 'Exo 2', sans-serif;
+}
