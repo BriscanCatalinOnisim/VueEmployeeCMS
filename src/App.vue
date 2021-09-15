@@ -1,16 +1,27 @@
 <template>
-  <div id="app">
-   
-  </div>
+  <v-app>
+    <div id="app">
+      <Navbar/> 
+      <Spacer/>
+      <Content/>
+      <Footer/>
+    </div>
+  </v-app>
 </template>
 
 <script>
+import Navbar from './components/navbar.vue';
+import Footer from './components/footer.vue';
+import Content from './components/content.vue';
+
 export default {
   name: 'App',
   components: {
-    
-  }
-}
+    Navbar,
+    Footer,
+    Content,
+  },
+};
 </script>
 
 <style>

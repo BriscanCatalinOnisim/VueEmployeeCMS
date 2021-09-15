@@ -1,0 +1,54 @@
+.headerRight {
+    display: flex;
+    justify-content: space-between;
+    background-color: #345B63;
+    flex-direction: row;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    font-family: 'Exo 2', sans-serif;
+}
+.menu-item {
+  padding-top: 7px;
+  padding: 5px;
+  color: #949494;
+}
+
+.menu-item1 {
+  padding-top: 7px;
+  padding: 5px;
+}
+
+.menu-item._menu._link {
+  padding-top: 20px;
+}
+
+._menu:hover {
+  box-shadow: 1px 5px 10px #949494;
+  background-color: rgba(60, 64, 67, 0.08);
+  border-radius: 50%;
+}
+
+a:visited {
+  color: rgba(0, 0, 0, 0.87);
+}
+a {
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.myphoto {
+  border-radius: 50%;
+  padding: 5px;
+  width: 30px;
+}
+
+.myphoto:hover {
+  box-shadow: 1px 5px 10px #949494;
+  background-color: rgba(60, 64, 67, 0.08);
+  border-radius: 50%;
+}
