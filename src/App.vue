@@ -3,16 +3,8 @@
     <div id="app">
       <Navbar/> 
       <Content/>
-      <inertia-table 
-      :data="users" 
-      id="id" 
-      :order="order" 
-      :filters="filters" 
-      :columns="columns" 
-      routeName="users" 
-      createLink="users.create" 
-      @item-selected="show">
-      </inertia-table>
+      <Table/>
+      <Modal/>
       <Footer/>
     </div>
   </v-app>
@@ -22,7 +14,8 @@
 import Navbar from './components/navbar.vue';
 import Footer from './components/footer.vue';
 import Content from './components/content.vue';
-import InertiaTable from './components/table.vue';
+import Table from './components/table.vue';
+import Modal from './components/modal.vue';
 
 export default {
   name: 'App',
@@ -30,23 +23,8 @@ export default {
     Navbar,
     Footer,
     Content,
-    InertiaTable,
-  },
-
-   props: {
-    users: Array,
-    filters: Object,
-    order: Object,
-  },
-  data() {
-    return {
-      columns: ["name", "email"],
-    }
-  },
-  methods: {
-    show(user) {
-      this.$inertia.replace(this.route('users.edit', user.id));
-    }
+    Table,
+    Modal,
   },
 };
 </script>

@@ -2,7 +2,7 @@
 
     <div class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
+            <span class="close-button" v-on:click="closeModal()">&times;</span>
             <h1>Hello, Add a new entry in the table!</h1>
             <div action="/action_page.php">
 
@@ -27,3 +27,17 @@
         </div>
     </div>
 </template>
+
+<script>
+
+export default {
+    methods: {
+        closeModal () {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        },
+    }
+}
+
+</script>
+
