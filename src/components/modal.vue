@@ -1,6 +1,6 @@
 <template>
 
-    <div id="modal" class="modal">
+    <div id="modal" class="mymodal">
         <div class="modal-content">
             <span class="close-button" v-on:click="closeModal()">&times;</span>
             <h1>Hello, Add a new entry in the table!</h1>
@@ -27,6 +27,8 @@
         </div>
     </div>
 </template>
+
+<style scoped src="../styles/modal.css"></style>
 
 <script>
 

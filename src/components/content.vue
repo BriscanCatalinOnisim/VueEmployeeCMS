@@ -2,7 +2,7 @@
     <div class="content">
         <div>
             <h2>Create Entry</h2>
-            <button id="button" class="trigger" style="vertical-align:middle" v-on:click="openModal()">
+            <button id="button" class="trigger"  v-on:click="openModal()">
                 <span> Create </span>
             </button>        
         </div> 
