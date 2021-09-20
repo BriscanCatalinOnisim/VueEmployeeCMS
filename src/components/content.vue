@@ -26,6 +26,7 @@
 
         <div style="overflow-x: auto;">
             <table id="myTable">
+                <th id="tno">No.</th>
                 <th id="tlname">Last Name</th>
                 <th id="tfname">First Name</th>
                 <th id="temail">Email</th>
@@ -33,7 +34,23 @@
                 <th id="tbirthday">Birthday</th> 
                 <th id="tphoto">Image</th>
                 <th id="tdelete">DeleteItem</th>   
-                <tbody id="employeesTableBody"></tbody>
+                <tbody id="employeesTableBody">
+                    <tr v-for="input in inputs" :key="input.id">
+                        <td>{{ input.id }}</td>
+                        <td>{{ input.lastName }}</td>
+                        <td>{{ input.firstName }}</td>
+                        <td>{{ input.email }}</td>
+                        <td>{{ input.gender }}</td>
+                        <td>{{ dateMoment(input.birthday) }}</td>
+                        <td>{{ input.image }}</td>
+                        <td>
+                            <input type="button" 
+                            class="delete-button fa fa-remove" 
+                            id="deleteButton" value="X" 
+                            v-on:click="deleteEmployee(input.id)">                        
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </div>
 
@@ -41,7 +58,15 @@
 </template>
 
 <script>
+import axios from "axios";
+import moment from 'moment';
+
 export default {
+    data () {
+        return {
+            inputs: [],
+        };
+    },
     methods: {
         openModal () {
             var modal = document.getElementById("modal");
@@ -51,9 +76,35 @@ export default {
                     modal.style.display = "none";
                 }
             };
+        }, 
+        dateMoment (input) {
+            var date = input.split("T");
+            console.log(date[0]);
+            date[0] = moment(date[0]).format('MMM DD YYYY');
+            return date[0];
         },
+        readData() {
+            axios
+            .get("https://localhost:44348/Employee/GetData")
+            .then((response) => {
+            this.inputs = response.data;
+                console.log(this.inputs);
+            });
+        },
+         deleteEmployee(id) {
+            if (!confirm("Are you sure ?")) {
+                return;
+            }
+            console.log(id);
+            axios.delete(`https://localhost:44348/Employee/Delete?id=${id}`);
+            location.reload();
+        }
     },
- };
+    mounted() {
+        this.readData();
+    }
+}
+
 </script>
 
 
