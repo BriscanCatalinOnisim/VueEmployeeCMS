@@ -1,8 +1,8 @@
 <template>
 
-    <div id="modal" class="mymodal">
+    <div id="modalEdit" class="myModal">
         <div class="modal-content">
-            <span class="close-button" v-on:click="closeModal()">&times;</span>
+            <span class="close-button" v-on:click="closeModalEdit()">&times;</span>
             <h1>Hello, Add a new entry in the table!</h1>
             <div action="/action_page.php">
                 <input type="text" id="lname" name="lastname" v-model="lastName" placeholder="Your last name.."/>
@@ -21,7 +21,7 @@
                 <label for="photo">Add Photo</label>
                 <input type="file" id="file-id" name="file_name">
                 
-                <input type="submit" id="add-employee-button" value="Submit" @click="addEmployeeMember">
+                <input type="submit" id="add-employee-button" value="Edit" @click="editEmployeeMember">
             </div>
         </div>
     </div>
@@ -46,35 +46,13 @@ export default {
     },
     methods: {
         moment: moment,
-        closeModal () {
-            var modal = document.getElementById("modal");
+        closeModalEdit () {
+            var modal = document.getElementById("modalEdit");
             modal.style.display = "none";
         },
-        addEmployeeMember() {
-             this.birthday = moment(this.birthday).format('MMM DD YYYY');
-            
-            if (this.lastName === "") {
-                alert("Enter Last Name");
-                return false;
-            }
-            if (this.firstName === "") {
-                alert("Enter First Name");
-                return false;
-            }
-            if (this.email === "") {
-                alert("Enter Email");
-                return false;
-            }
-            if (this.gender === "") {
-                alert("Enter Gender");
-                return false;
-            }
-            if (this.birthday === "") {
-                alert("Enter Birthday");
-                return false;
-            }
+        editEmployeeMember() {
             axios.post(
-                "https://localhost:44348/Employee/CreateEmployee",
+                `https://localhost:44348/Employee/Edit`,
                 `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&gender=${this.gender}&birthday=${this.birthday}&image=${this.image}`
                 ).then(res => {
                 console.log(res);

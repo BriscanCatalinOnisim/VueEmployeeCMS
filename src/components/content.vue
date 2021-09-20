@@ -7,7 +7,7 @@
             </button>        
         </div> 
 
-        <input type="text" id="myInput" onkeyup="sortNames()" placeholder="Search for names ..." title="Type in a name">
+        <input type="text" id="myInput" placeholder="Search ..." title="Type in a name" v-model="filterNames">
         <div>
             <select class="sortClass" id="sortBy">
                 <option class="sort-option" selected value="name">Name</option>
@@ -44,10 +44,16 @@
                         <td>{{ dateMoment(input.birthday) }}</td>
                         <td>{{ input.image }}</td>
                         <td>
+                            <div>
                             <input type="button" 
                             class="delete-button fa fa-remove" 
                             id="deleteButton" value="X" 
-                            v-on:click="deleteEmployee(input.id)">                        
+                            v-on:click="deleteEmployee(input.id)">
+                            <img src="../assets/edit.png" 
+                                width=30  style="padding-top: 25px"
+                                v-on:click="openEditModal()"
+                                v-if="input.id != 0"/>                          
+                            </div>
                         </td>
                     </tr>
                 </tbody>
@@ -65,11 +71,27 @@ export default {
     data () {
         return {
             inputs: [],
+            filterNames: "",
+            lastName: "",
+            firstName: "",
+            email: "",
+            gender: "",
+            birthday: "",
+            image: "",
         };
     },
     methods: {
         openModal () {
             var modal = document.getElementById("modal");
+            modal.style.display = "block";
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        }, 
+        openEditModal () {
+            var modal = document.getElementById("modalEdit");
             modal.style.display = "block";
             window.onclick = function (event) {
                 if (event.target == modal) {
@@ -91,7 +113,17 @@ export default {
                 console.log(this.inputs);
             });
         },
-         deleteEmployee(id) {
+        updateClick(id) {
+            axios
+            .put(`https://localhost:44348/Employee/Edit?id=${id}`, 
+            `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&gender=${this.gender}&birthday=${this.birthday}&image=${this.image}`
+            )
+            .then((response) => {
+            console.log(response.data);
+            location.reload();
+            });
+        },
+        deleteEmployee(id) {
             if (!confirm("Are you sure ?")) {
                 return;
             }

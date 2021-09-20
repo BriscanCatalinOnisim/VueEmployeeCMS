@@ -2,6 +2,7 @@
   <div id="application">
     <Navbar/> 
     <Content/>
+    <EditModal/>
     <Modal/>
     <Footer/>
   </div>
@@ -12,6 +13,7 @@ import Navbar from './components/navbar.vue';
 import Content from './components/content.vue';
 import Modal from './components/modal.vue';
 import Footer from './components/footer.vue';
+import EditModal from './components/editModal.vue';
 
 
 export default {
@@ -21,6 +23,7 @@ export default {
     Content,
     Modal,
     Footer,
+    EditModal,
   },
 };
 </script>
