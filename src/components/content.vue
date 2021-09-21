@@ -8,6 +8,9 @@
         </div> 
 
         <input type="text" id="myInput" placeholder="Search ..." title="Type in a name" v-model="filterNames">
+        <button id="button" v-on:click="searchMember()">
+            <span> Search </span>
+        </button>
         <div>
             <select class="sortClass" id="sortBy">
                 <option class="sort-option" selected value="name">Name</option>
@@ -99,9 +102,22 @@ export default {
                 }
             };
         }, 
+        searchMember() {
+            if (this.filterNames != "" )
+            {
+                axios
+                .get(`https://localhost:44348/Employee/FindMember?name=${this.filterNames}`)
+                .then((response) => {
+                this.inputs = response.data;                    
+                });
+            }
+            else 
+            {
+                this.readData();
+            }
+        },
         dateMoment (input) {
             var date = input.split("T");
-            console.log(date[0]);
             date[0] = moment(date[0]).format('MMM DD YYYY');
             return date[0];
         },
