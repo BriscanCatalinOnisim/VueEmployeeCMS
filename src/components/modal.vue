@@ -5,22 +5,30 @@
             <span class="close-button" v-on:click="closeModal()">&times;</span>
             <h1>Hello, Add a new entry in the table!</h1>
             <div action="/action_page.php">
+            <div class="lastn">
                 <input type="text" id="lname" name="lastname" v-model="lastName" placeholder="Your last name.."/>
+            </div>
+            <div class="firstn">
                 <input type="text" id="fname" name="firstname" v-model="firstName" placeholder="Your name.."/>                                
+            </div>
+            <div class="email">
                 <input type="text" id="email" name="email" v-model="email" placeholder="Your email.."/>  
-
+            </div>
+            <div class="gender">
                 <label for="Gender">Gender</label>            
                 <select id="gender" name="gender" v-model="gender">
                     <option value="male">male</option>
                     <option value="female">female</option> 
                 </select>
-            
+            </div>
+            <div class="birthday">
                 <label for="birthday">Birthday</label>            
                 <input type="date" id="birthday" name="birthday" v-model="birthday" max="2005-12-31"/>
-            
+            </div>
+            <div class="image">
                 <label for="photo">Add Photo</label>
                 <input type="file" id="file-id" name="file_name">
-                
+            </div>
                 <input type="submit" id="add-employee-button" value="Submit" @click="addEmployeeMember">
             </div>
         </div>

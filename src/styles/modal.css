@@ -86,3 +86,28 @@ input[type=button] {
     border-radius: 4px;
     cursor: pointer;
 }
+
+
+@media (max-width: 1250px) {
+    .firstn {
+      flex-direction: column;
+    }
+    .lastn {
+      flex-direction: column;
+    }
+    .email {
+      flex-direction: column;
+    }
+    .gender {
+      flex-direction: column;
+    }
+    .birthday {
+      flex-direction: column;
+    }
+    .label {
+      width: auto;
+    }
+    .modal-content {
+      width: 50%;
+    }
+  }
